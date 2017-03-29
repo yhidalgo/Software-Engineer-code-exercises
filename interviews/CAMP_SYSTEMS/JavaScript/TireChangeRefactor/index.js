@@ -12,15 +12,11 @@
     function getAircraftsDueForTireChange(allAircraftData) {
         var aircraftDueForTireChanges = [];
         var numberOfAircrafts = allAircraftData.length;
-        var numberOfLandings = 0;
-        var countLandingsSinceLastTireChange = 0;
-        var lastTireChange = '3/28/2017';
-        var currentAircraftData = {};
         for (var i = 0; i < numberOfAircrafts; i++) {
-            currentAircraftData = allAircraftData[i];
-            numberOfLandings =  currentAircraftData.landings.length;
-            countLandingsSinceLastTireChange = 0;
-            lastTireChange = currentAircraftData.lastTireChange;
+            var currentAircraftData = allAircraftData[i];
+            var numberOfLandings =  currentAircraftData.landings.length;
+            var countLandingsSinceLastTireChange = 0;
+            var lastTireChange = currentAircraftData.lastTireChange;
             for (var j = 0; j < numberOfLandings; j++) {
                 if (currentAircraftData.landings[j] >= lastTireChange) {
                     // There is no need to store all the latest landing dates, it is a waste of space that grows linearly ~ O(n)
